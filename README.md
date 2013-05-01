@@ -123,3 +123,5 @@ android-app项目设置2-3名管理者，目前的管理者是
 
 ps. 
 详细的协作步骤请参考Iceskysl写的[基于Github参与eoe的开源项目指南](http://my.eoe.cn/iceskysl/archive/3195.html)文章
+
+liweihong test
