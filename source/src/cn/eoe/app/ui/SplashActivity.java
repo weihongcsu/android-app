@@ -32,7 +32,7 @@ public class SplashActivity extends BaseActivity {
 	protected void onResume() {
 		super.onResume();
 		mHandler.removeMessages(0);
-		mHandler.sendEmptyMessageDelayed(0, 2000);
+		mHandler.sendEmptyMessageDelayed(0, 2000);//李巍宏：如果不延时，会闪。
 	}
 
 	private void goHome() {

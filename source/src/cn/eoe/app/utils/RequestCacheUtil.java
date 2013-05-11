@@ -15,6 +15,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.os.Build;
 import android.os.Environment;
+import android.util.Log;
 import cn.eoe.app.config.Configs;
 import cn.eoe.app.config.Constants;
 import cn.eoe.app.db.DBHelper;
@@ -40,7 +41,7 @@ public class RequestCacheUtil {
 		if (!CommonUtil.sdCardIsAvailable())/* true 为可用 */{
 			return getCacheRequest(context, RequestUrl, cachePath, source_type,
 					content_type, dbHelper, UseCache);
-		} else {
+		} else {//李巍宏：这是sdcard可用的
 			return getCacheRequest(context, RequestUrl, imagePath, source_type,
 					content_type, dbHelper, UseCache);
 		}
@@ -111,10 +112,14 @@ public class RequestCacheUtil {
 		String result = "";
 		try {
 			result = HttpUtils.getByHttpClient(context, requestUrl);
-			if (result.equals(null) && result.equals("")) {
+			
+			Log.i("liweihong", "return result?");
+			if (result.equals(null) && result.equals("")) {//李巍宏：这里有问题。
 				return result;
 			}
 			// 更新数据库
+			//李巍宏：做了什么？
+			Log.i("liweihong", "更新数据库");
 			Cursor cursor = getStringFromDB(requestUrl, dbHelper);
 			updateDB(cursor, requestUrl, source_type, content_type, dbHelper);
 			saveFileByRequestPath(requestPath, result);

@@ -137,7 +137,7 @@ public class MainActivity extends BaseSlidingFragmentActivity implements
 		initViewPager();
 		initListView();
 		initgoHome();
-		initNav();
+		initNav();//李巍宏：侧边栏
 	}
 
 	@Override
@@ -324,7 +324,7 @@ public class MainActivity extends BaseSlidingFragmentActivity implements
 			showMenu();
 			break;
 		case R.id.login_login:
-			SharedPreferences share = this.getSharedPreferences(
+			SharedPreferences share = this.getSharedPreferences(//李巍宏：怎么存的？？？
 					UserLoginUidActivity.SharedName, Context.MODE_PRIVATE);
 			// [start] 修复上一个bug
 			String Key = share.getString(UserLoginUidActivity.KEY, "");
@@ -337,7 +337,7 @@ public class MainActivity extends BaseSlidingFragmentActivity implements
 			if (share.contains(UserLoginUidActivity.KEY)
 					&& !share.getString(UserLoginUidActivity.KEY, "")
 							.equals("")) {
-				IntentUtil.start_activity(this, UserCenterActivity.class);
+				IntentUtil.start_activity(this, UserCenterActivity.class);//李巍宏：这里
 			} else {
 				IntentUtil.start_activity(this, UserLoginActivity.class);
 			}

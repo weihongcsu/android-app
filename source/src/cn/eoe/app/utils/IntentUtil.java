@@ -7,7 +7,7 @@ import android.content.Intent;
 import cn.eoe.app.R;
 
 public class IntentUtil {
-	public static void start_activity(Activity activity,Class<?> cls,BasicNameValuePair...name)
+	public static void start_activity(Activity activity,Class<?> cls,BasicNameValuePair...name)//李巍宏：留意一下参数
 	{
 		Intent intent=new Intent();
 		intent.setClass(activity,cls);

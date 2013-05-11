@@ -114,7 +114,7 @@ public class CustomHttpClient {
 			// 请求成功
 			if (httpResponse.getStatusLine().getStatusCode() != HttpStatus.SC_OK) {
 				throw new RuntimeException(context.getResources().getString(
-						R.string.httpError));
+						R.string.httpError));//李巍宏：抛给谁了？？？
 			}
 			return EntityUtils.toString(httpResponse.getEntity());
 		} catch (ParseException e) {

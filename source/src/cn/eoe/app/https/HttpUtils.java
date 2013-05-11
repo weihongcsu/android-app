@@ -25,7 +25,7 @@ public class HttpUtils {
 	}
 
 	public static String getByHttpClient(Context context,String strUrl,
-			NameValuePair... nameValuePairs) {
+			NameValuePair... nameValuePairs) {//李巍宏：神马参数？
 		return CustomHttpClient.getFromWebByHttpClient(context,strUrl, nameValuePairs);
 	}
 
