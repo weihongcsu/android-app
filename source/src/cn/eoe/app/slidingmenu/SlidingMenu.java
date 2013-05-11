@@ -520,7 +520,7 @@ public class SlidingMenu extends RelativeLayout {
 	 * @param animate true to animate the transition, false to ignore animation
 	 */
 	public void showContent(boolean animate) {
-		mViewAbove.setCurrentItem(1, animate);
+		mViewAbove.setCurrentItem(1, animate);//李巍宏：改成0，启动后就自动左侧也打开；
 	}
 
 	/**

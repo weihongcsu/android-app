@@ -6,6 +6,7 @@ public class Constants {
 		public static final String NEWS_TAG = "news";
 		public static final String BLOG_TAG = "blog";
 		public static final String WIKI_TAG = "wiki";
+		public static final String WEIHONG_TAG = "weihong";
 	}
 
 	public static final class DBContentType {

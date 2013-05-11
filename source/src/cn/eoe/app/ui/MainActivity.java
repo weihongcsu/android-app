@@ -219,7 +219,7 @@ public class MainActivity extends BaseSlidingFragmentActivity implements
 
 	private void initListView() {
 		lvAdapter = new SimpleAdapter(this, getData(),
-				R.layout.behind_list_show, new String[] { LIST_TEXT,
+				R.layout.behind_list_show, new String[] { LIST_TEXT,//根据这个串来取数据
 						LIST_IMAGEVIEW },
 				new int[] { R.id.textview_behind_title,
 						R.id.imageview_behind_icon }) {
@@ -285,7 +285,10 @@ public class MainActivity extends BaseSlidingFragmentActivity implements
 				R.string.menuStudio), Constants.TAGS.WIKI_TAG);
 		NavigationModel nav4 = new NavigationModel(getResources().getString(
 				R.string.menuBlog), Constants.TAGS.BLOG_TAG);
-		Collections.addAll(navs, nav1, nav2, nav3, nav4);
+		//李巍宏：不加nav5，则侧边栏中“menuWeihong”不能点击，一点就挂；
+		NavigationModel nav5 = new NavigationModel(getResources().getString(
+				R.string.menuWeihong), Constants.TAGS.WEIHONG_TAG);
+		Collections.addAll(navs, nav1, nav2, nav3, nav4,nav5);
 	}
 
 	private void initgoHome() {
@@ -308,6 +311,11 @@ public class MainActivity extends BaseSlidingFragmentActivity implements
 		list.add(map);
 		map = new HashMap<String, Object>();
 		map.put(LIST_TEXT, getResources().getString(R.string.menuBlog));
+		map.put(LIST_IMAGEVIEW, R.drawable.dis_menu_blog);
+		list.add(map);
+		//李巍宏：加一行巍宏博客；
+		map = new HashMap<String, Object>();
+		map.put(LIST_TEXT, getResources().getString(R.string.menuWeihong));
 		map.put(LIST_IMAGEVIEW, R.drawable.dis_menu_blog);
 		list.add(map);
 		return list;
