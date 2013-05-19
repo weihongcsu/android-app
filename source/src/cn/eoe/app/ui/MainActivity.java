@@ -44,6 +44,7 @@ import cn.eoe.app.biz.BaseDao;
 import cn.eoe.app.biz.BlogsDao;
 import cn.eoe.app.biz.NewsDao;
 import cn.eoe.app.biz.TopDao;
+import cn.eoe.app.biz.WeihongDao;
 import cn.eoe.app.biz.WikiDao;
 import cn.eoe.app.config.Constants;
 import cn.eoe.app.db.DBHelper;
@@ -98,6 +99,7 @@ public class MainActivity extends BaseSlidingFragmentActivity implements
 	private BlogsDao blogsDao;
 	private NewsDao newsDao;
 	private WikiDao wikiDao;
+	private WeihongDao weihongDao;
 
 	private List<Object> categoryList;
 
@@ -130,7 +132,7 @@ public class MainActivity extends BaseSlidingFragmentActivity implements
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		initSlidingMenu();
+		initSlidingMenu();//???
 		setContentView(R.layout.above_slidingmenu);
 		initClass();
 		initControl();
@@ -206,14 +208,17 @@ public class MainActivity extends BaseSlidingFragmentActivity implements
 		newsDao = new NewsDao(this);
 		wikiDao = new WikiDao(this);
 		topDao = new TopDao(this);
+		weihongDao = new WeihongDao(this);
 	}
 
 	private void initViewPager() {
 		mBasePageAdapter = new BasePageAdapter(MainActivity.this);
 		mViewPager.setOffscreenPageLimit(0);
 		mViewPager.setAdapter(mBasePageAdapter);
-		mIndicator.setViewPager(mViewPager);
+		//李巍宏：管fragment的title变换的
+		mIndicator.setViewPager(mViewPager);//mViewPager.setOnPageChangeListener(TitlePageIndicator);
 		mIndicator.setOnPageChangeListener(new MyPageChangeListener());
+		
 		new MyTask().execute(topDao);
 	}
 
@@ -269,6 +274,8 @@ public class MainActivity extends BaseSlidingFragmentActivity implements
 				case 3:
 					new MyTask().execute(blogsDao);
 					break;
+				case 4:
+					new MyTask().execute(weihongDao);
 				}
 			}
 		});
@@ -551,7 +558,15 @@ public class MainActivity extends BaseSlidingFragmentActivity implements
 					map.put("tabs", categorys);
 					map.put("list", categoryList);
 				}
-			} else {
+			} else if(dao instanceof WeihongDao){
+				mTag = 4;
+				if ((categoryList = weihongDao.mapperJson(mUseCache)) != null) {
+
+					categorys = weihongDao.getCategorys();
+					map.put("tabs", categorys);
+					map.put("list", categoryList);
+				}
+			} else{
 				return null;
 			}
 			return map;
